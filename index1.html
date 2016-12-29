@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>
+			What Can I Do Today?
+		</title>
+		<link rel="stylesheet" href="css/style.css"> <!--links to the stylesheet-->
+		<script type="text/javascript" src="js/script1.js"></script><!---javascript-->
+		<link href="https://fonts.googleapis.com/css?family=Dekko" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+	</head>
+	<body>
+		<div class="row">
+			<div id="ropeswing" class= "col-4">
+			<img src="images/activity.jpg" alt="children swinging on a rope"/>
+			<header>
+				<h1> What Can I Do Today?</h1>
+				<h2> Family Friendly Activity Checker</h2>
+			</header>
+			</div>
+			<form class="col-8">
+				<div class="row">
+				    <label for="date_input">When? :</label><input id="date_input" type="date" name="date" >
+				</div>
+				<div class="row">
+				    <label for="location_input">Where?:</label><input id="location_input" type="text" name="location">
+				</div>
+
+				<div id="buttons" class="col-12">
+					<label class = "mybutton" for="parks"><span></span>Parks</label>
+					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735">
+					<label class = "mybutton" for="playcentres"><span></span>Play Centres</label>
+					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e7941735">
+					<label class = "mybutton" for="cinema"><span></span>Cinema</label>
+					<input type="checkbox" id="cinema" value="4bf58dd8d48988d17f941735">
+					<label class = "mybutton" for="food"><span></span>Food</label>
+					<input type="checkbox"  id="food" value="4bf58dd8d48988d16d941735">
+					<label class = "mybutton" for="outdoor"><span></span>Outdoor</label>
+					<input type="checkbox"  id="outdoor" value="4d4b7105d754a06377d81259">
+					<label class = "mybutton" for="sports"><span></span>Sports</label>
+					<input type="checkbox"  id="sports" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79ea,52e81612bcbc57f1066b79e6">
+					<label class = "mybutton" for="books" ><span></span>Books</label>
+					<input type="checkbox"  id="books" value="Books">
+					<label class = "mybutton" for="museum"><span></span>Museums</label>
+					<input type="checkbox"  id="museum" value="4bf58dd8d48988d190941735">
+					<label class = "mybutton" for="shows"><span></span>Shows</label>
+					<input type="checkbox"  id="shows" value="Shows">
+					<label class = "mybutton" for="craft"><span></span>Craft</label>
+					<input type="checkbox"  id="craft" value="Craft">
+					<label class = "mybutton" for= "music" ><span></span>Music</label>
+					<input type="checkbox"  id="music" value="Music">
+					<label class = "mybutton" for="parking"><span></span>Parking</label>
+					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
+				</div>
+				<input id="go" type="button" value="GO" class="mybutton">
+				<span id="activity"></span>
+				<input id="ll" type="text" name="ll">
+
+			</form>
+		</div>
+		<div class="row">
+			<div id="map" class="col-8">
+
+				<script async defer
+					src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o&callback=initMap">
+				</script>
+
+			</div>
+			<div id="results" class="col-4">
+				<header>
+					<h2>  Why not try ......? </h2>
+				</header>
+				<p id="placestogo">
+				</p>
+			</div>
+		</div>
+
+  </body>
+</html>
