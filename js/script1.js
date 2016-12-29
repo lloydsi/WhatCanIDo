@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
             xhttp.open("GET", "https://api.foursquare.com/v2/venues/search?ll="+ll+"&intent=browse&client_id="+clientId+"&client_secret="+clientSecret+"&v=20170101&categoryId="+categoryID+"&limit="+lim+"&radius="+radius);            
 			xhttp.send();
 			}
-			FsPlaces();
+		FsPlaces();
 			
 		function processResponse() {     /*search google maps api and add markers for places found in Foursquare*/
             var data = JSON.parse(this.response);
@@ -63,14 +63,18 @@ document.addEventListener('DOMContentLoaded', function(){
 		        var venueName = data.response.venues[i].name
 				var venueId= data.response.venues[i].id
 				var venueLink = 'http://foursquare.com/v/' + venueId +'?ref=PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW'
-				var contentString = venueName+'<div id="markerwindow"><p> <a href='+venueLink+' target="_blank">More Info...</a></p></div>'   
-				if (data.response.venues[i].id === "4c38df4de52ce0d596b336e1"){
-					var marker = new google.maps.Marker({position: where, map: map, icon:"parking.png", label: labels});
-				}
+				var contentString = venueName+'<div id="markerwindow"><p> <a href='+venueLink+' target="_blank">More Info...</a></p></div>' 
+				var iconBase = "star.png";
+				if (data.response.venues[i].categories[0].id === "4c38df4de52ce0d596b336e1"){
+					var specialIcon = "parking.png";
+					 }
 				else{
-				    var marker = new google.maps.Marker({position: where, map: map, icon:"star.png", label: labels});
-				}
-				marker.content = contentString 
+					var specialIcon = "star.png";
+					}
+				
+				
+				var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon, label: labels});
+				marker.content = contentString;
 				var infoWindow = new google.maps.InfoWindow();
 				google.maps.event.addListener(marker, 'click', function() {infoWindow.setContent(this.content);infoWindow.open(this.map,this)});
          	    items.appendChild(places)
