@@ -7,7 +7,7 @@
 			What Can I Do Today?
 		</title>
 		<link rel="stylesheet" href="css/style.css"> <!--links to the stylesheet-->
-		<script type="text/javascript" src="js/script.js"></script><!---javascript-->
+		<script type="text/javascript" src="js/script1.js"></script><!---javascript-->
 		<link href="https://fonts.googleapis.com/css?family=Dekko" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -17,50 +17,71 @@
 	<body>
 		<div class="row">
 			<div id="ropeswing" class= "col-4">
-			<img src="images/activity.jpg" alt="children swinging on a rope"/>
+			<img src="images/EditedActivity.png" alt="children swinging on a rope"/>
 			<header>
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
 			</header>
 			</div>
-			<form class="col-8">
-			    <form class="col-8" method="link" action="results.html">
-				    <div class="row">
-				        <label for="date_input">When? </label><input id="date_input" type="date" name="date" >
-				    </div>
-				    <div class="row">
-				        <label for="location_input">Where? </label><input id="location_input" type="text" name="location">
-				    </div>
-                </form>
-				<div id="buttons" class="col-12">
-					<label class = "mybutton" for="parks"><span></span>Parks</label>
-					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,52e81612bcbc57f1066b7a26,56aa371be4b08b9a8d573541,4bf58dd8d48988d15f941735">
-					<label class = "mybutton" for="playcentres"><span></span>Play Centres</label>
-					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e7941735,5744ccdfe4b0c0459246b4b5">
-					<label class = "mybutton" for="cinema"><span></span>Cinema</label>
-					<input type="checkbox" id="cinema" value="4bf58dd8d48988d17f941735">
-					<label class = "mybutton" for="food"><span></span>Food</label>
-					<input type="checkbox"  id="food" value="4bf58dd8d48988d16d941735">
-					<label class = "mybutton" for="outdoor"><span></span>Outdoor</label>
-					<input type="checkbox"  id="outdoor" value="4d4b7105d754a06377d81259">
-					<label class = "mybutton" for="sports"><span></span>Sports</label>
-					<input type="checkbox"  id="sports" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79ea,52e81612bcbc57f1066b79e6">
-					<label class = "mybutton" for="books" ><span></span>Books</label>
-					<input type="checkbox"  id="books" value="Books">
-					<label class = "mybutton" for="museum"><span></span>Museums</label>
-					<input type="checkbox"  id="museum" value="4bf58dd8d48988d190941735">
-					<label class = "mybutton" for="shows"><span></span>Shows</label>
-					<input type="checkbox"  id="shows" value="Shows">
-					<label class = "mybutton" for="craft"><span></span>Craft</label>
-					<input type="checkbox"  id="craft" value="">
-					<label class = "mybutton" for= "music" ><span></span>Music</label>
-					<input type="checkbox"  id="music" value="Music">
-					<label class = "mybutton" for="parking"><span></span>Parking</label>
-					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
+			<form class="col-8" >
+				<div class="row">
+				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3">
 				</div>
-				<span><a href="results.html">click me</a><input id="go" type="button" value="GO" class="mybutton" ></span>
+				<div class="row">
+				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">
+					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3"><span id="m">metres</span>
+				</div>
+				<div class="row col-12" id="buttons" >
+					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
+					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,52e81612bcbc57f1066b7a26,56aa371be4b08b9a8d573541,4bf58dd8d48988d15f941735">
+					<label class = "mybutton col-4" for="playcentres" id="pc"><span></span>Play Centres</label>
+					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e7941735,5744ccdfe4b0c0459246b4b5">
+					<label class = "mybutton col-4" for="cinema" id="cin"><span></span>Cinema</label>
+					<input type="checkbox" id="cinema" value="4bf58dd8d48988d17f941735">
+					<label class = "mybutton col-4" for="food" id="fd"><span></span>Food</label>
+					<input type="checkbox"  id="food" value="4bf58dd8d48988d16d941735">
+					<label class = "mybutton col-4" for="outdoor" id="out"><span></span>Outdoor</label>
+					<input type="checkbox"  id="outdoor" value="4d4b7105d754a06377d81259">
+					<label class = "mybutton col-4" for="sports" id="spo"><span></span>Sports</label>
+					<input type="checkbox"  id="sports" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79ea,52e81612bcbc57f1066b79e6,52e81612bcbc57f1066b7a44">
+					<label class = "mybutton col-4" for="books" id="bks" ><span></span>Books</label>
+					<input type="checkbox"  id="books" value="4bf58dd8d48988d12f941735">
+					<label class = "mybutton col-3" for="museum" id="mus"><span></span>Museums</label>
+					<input type="checkbox"  id="museum" value="4bf58dd8d48988d190941735">
+					<label class = "mybutton col-4" for="shows" id="shw"><span></span>Shows</label>
+					<input type="checkbox"  id="shows" value="56aa371be4b08b9a8d573532,56aa371be4b08b9a8d573532,56aa371be4b08b9a8d573532">
+					<label class = "mybutton col-4" for="worship" id="wor"><span></span>Worship</label>
+					<input type="checkbox"  id="worship" value="4bf58dd8d48988d131941735,">
+					<label class = "mybutton col-4" for= "music" id="musi"><span></span>Music</label>
+					<input type="checkbox"  id="music" value="4bf58dd8d48988d1e5931735,5267e4d9e4b0ec79466e48d1,4bf58dd8d48988d12f941735,4f04b10d2fb6e1c99f3db0be">
+					<label class = "mybutton col-4" for="parking" id="prk"><span></span>Parking</label>
+					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
+					<a href="#map" target="_top" id="go" class="mybutton">GO !</a>
+				</div>
 				<span id="activity"></span>
+				<input id="ll" type="text" name="ll">
 			</form>
 		</div>
-	</body>
+		<div class="row">
+			<div id="map" class="col-8">
+				<script async defer
+					src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o&callback=initMap">
+				</script>
+
+			</div>
+			<div id="results" class="col-4">
+				<header>
+					<h2>  Why not try ...... </h2>
+					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a>
+				</header>
+				<p id="placestogo">
+				</p>
+				<p id="mapiconcredit">
+				Maps Icons Collection https://mapicons.mapsmarker.com
+				<img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo">
+				</p>
+			</div>
+		</div>
+
+  </body>
 </html>

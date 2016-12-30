@@ -84,7 +84,7 @@ table {
 /*====================begin CSS for page======*/
 body{
   font-family:Reem Kufi, sans-serif;
-  background-color: rgb(246,154,50); /*orange*/
+  background-color:  #F3F0EB; /*#FAAC58/*rgb(246,154,50); /*orange*/
 }
 
 #ropeswing{
@@ -130,11 +130,12 @@ header{
 
 header h1{
   font-family: 'Shadows Into Light', cursive;
-  font-size: 550%;
+  font-size: 500%;
   margin-bottom: 2%;
   margin-top:3%;
   font-weight:bolder;
   display: block;
+  color:#494642;
 }
 @media screen and (max-width: 1000px) {
     header h1{
@@ -148,6 +149,9 @@ header h1{
 		width: 100%;
 		margin-top:10%;
 	}
+}
+
+@media screen and (max-width: 800px) {
     header h1{
 		margin: auto;
 		font-size: 350%;
@@ -162,13 +166,13 @@ header h1{
 	}
 }
 header h2{
-  font-family: 'Reem Kufi', sans-serif;
-  font-size: 210%;
+  font-family: courier new; /*'Reem Kufi', sans-serif;*/
+  font-size: 230%;
   position: relative;
-  margin-left: 10%;
+  margin-left: 15%;
   margin-bottom: 5%;
   display: block;
-  font-weight: lighter;
+  color:#2DA7F8;/*#746F6A;*/
 }
 @media screen and (max-width: 1200px) {
 	header h2{
@@ -192,27 +196,36 @@ header h2{
 	margin: 0;
 	position: relative;
 	top: 1%;
-	text-align: center;
+	text-align: left;
 	padding-top: 2%;
 	padding-bottom: 2%;
 	font-weight: normal;
+	font-family: 'Shadows Into Light', cursive;
+	color: #2DA7F8;
+	font-weight: bold;
 }
 
 .mybutton {
-    background-color: rgb(56,168,254); /* blue */
+    background-color: #FB9905; /*rgb(205,192,194); */
     border: 1px solid;
     box-shadow: 0 2px grey;
     border-radius: 5%;
     color: white;
-    padding: 1% 2%;
+    padding: /*1% 2%;*/;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 110%;
     width: 20%;
     margin: 0.5%;
-    font-family:'Reem Kufi', sans-serif;
+    font-family: courier new;/*'Reem Kufi', sans-serif;*/
 }
+
+#searchAgain{
+	width: 25%;
+	margin-left: 95%;
+}
+
 @media screen and (max-width: 950px) {
     .mybutton{
 		font-size: 80%;
@@ -234,16 +247,25 @@ header h2{
   color: black;
 }
 
-/*input[type="checkbox"] {
+input[type="checkbox"] {
     display:none;
-}*/
+}
+
+#activity,
+#ll{
+	display:none;
+}
 
 #go{
-	background-color: yellow;
+	background-color: #2DA7F8;
 	color: black;
+	font-size:22px;
+	font-weight:bold;
+	font-family: 'Shadows Into Light', cursive;
 	margin:auto;
-	margin-top:5%;
+	margin-top:3%;
 	margin-left: 30%;
+	padding:1%;
 }
 
 @media screen and (max-width: 800px) {
@@ -253,7 +275,8 @@ header h2{
 }
 #buttons{
   margin: auto;
-  margin-top: 3%;
+  margin-top: 0.5%;
+  padding-top: 0;
 }
 @media screen and (max-width: 800px) {
     #buttons{
@@ -286,10 +309,28 @@ form{
 }
 #date_input,
 #location_input,
+#radius,
 label{
   font-size: 100%;
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: courier new;
+  padding:0.75%;
   margin: 0.5%;
+  margin-bottom:1%;
+  padding-bottom:0.5;
+}
+#date_input{
+	padding:0.5%;
+}
+
+div.row label.col-1{
+	font-family: 'Shadows Into Light', cursive;
+	color: #2DA7F8;
+	font-size: 150%;
+	font-weight: bold;
+	padding-top: 0;
+	margin-top: 0;
+	padding-bottom:0.5%;
+	margin-right:3%;
 }
 	
 }
@@ -312,7 +353,7 @@ label{
 }
 
 #results{
-	background-color: rgb(56,168,254);
+	background-color: #F3F0EB; /*rgb(56,168,254);*/
 	height: 100vh;
 	overflow: scroll;
 }
@@ -325,11 +366,14 @@ div.gm-style div{
 }
 li{
 	padding:1%;
+	font-family: courier new;
 }
 
-#map marker label{
-	color: red;
-	font-weight: bolder;
+#mapiconcredit{
+	font-size:70%;
+	color: black;
+	font-family: courier new;
+	margin-top: 5%;
 }
 
 
