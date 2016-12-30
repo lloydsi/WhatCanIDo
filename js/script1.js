@@ -48,12 +48,13 @@ document.addEventListener('DOMContentLoaded', function(){
             var xhttp = new XMLHttpRequest();
             xhttp.addEventListener('load', processResponse); 
 			var lim = 30;    /*limit of results*/
-		    var radius = document.getElementById("radius").value; /*search radius*/
+		    /*var radius = document.getElementById("radius").value;/* /*search radius
 			if (radius !=""){
 			     radius = Number(document.getElementById("radius").value);}
 			else{
 				radius = 1500;
-			}
+			}*/
+			var radius = 2000;
 		    var clientId = "PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW"
 			var clientSecret = "GL4DEJONWD12BTHKHJAJNOY5L3SYZD3MLWHIUYXMNGOHFCTT";
 			var categoryID = String(document.getElementById("activity").innerHTML);   /*string containing venue category id's from buttons*/
@@ -77,19 +78,18 @@ document.addEventListener('DOMContentLoaded', function(){
 				    var lats = Number(data.response.venues[i].location.lat);/*Get the latitude and lng for Google Map*/
 				    var lngs = Number(data.response.venues[i].location.lng);
 			        var where = {lat: lats, lng: lngs};   
-				    /*var labels = (i+1) + ".";*/
+				    var labels = (i+1) + ".";
 		            var venueName = data.response.venues[i].name
 				    var venueId= data.response.venues[i].id
 				    var venueLink = 'http://foursquare.com/v/' + venueId +'?ref=PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW'
 				    var contentString = venueName+'<div id="markerwindow"><p> <a href='+venueLink+' target="_blank">More Info...</a></p></div>' 
-				    var iconBase = "star.png";
-				    if (data.response.venues[i].categories[0].id === "4c38df4de52ce0d596b336e1"){
-					    var specialIcon = "images/carparking.png";
+				    if (data.response.venues[i].categories[0].id  === "4c38df4de52ce0d596b336e1"){
+					    var specialIcon = "images/parking.png";
 					    }
 				    else{
-					    var specialIcon = "images/playground.png";
+					    var specialIcon = "images/mapicon.png";
 					    }		
-				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon/*, label: labels*/});
+				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon, label: labels});
 				    marker.content = contentString;
 				    var infoWindow = new google.maps.InfoWindow();
 				    google.maps.event.addListener(marker, 'click', function() {infoWindow.setContent(this.content);infoWindow.open(this.map,this)});

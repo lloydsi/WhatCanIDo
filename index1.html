@@ -8,8 +8,6 @@
 		</title>
 		<link rel="stylesheet" href="css/style.css"> <!--links to the stylesheet-->
 		<script type="text/javascript" src="js/script1.js"></script><!---javascript-->
-		<link href="https://fonts.googleapis.com/css?family=Dekko" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
@@ -17,7 +15,7 @@
 	<body>
 		<div class="row">
 			<div id="ropeswing" class= "col-4">
-			<img src="images/EditedActivity.png" alt="children swinging on a rope"/>
+			<img src="images/activity.jpg" alt="children swinging on a rope"/>
 			<header>
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
@@ -25,11 +23,12 @@
 			</div>
 			<form class="col-8" >
 				<div class="row">
-				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3">
+				    <label for="date_input" class="col-2">When? </label><input id="date_input" type="date" name="date" class="col-3">
+					<label for="query" class="col-2">Looking for?</label><input id="query" type="text" name="query" class="col-3"><span id="optional" class="col-12">(optional)</span>
 				</div>
 				<div class="row">
-				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">
-					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3"><span id="m">metres</span>
+				    <label for="location_input" class="col-2">Where?</label><input id="location_input" type="text" name="location" class="col-3">
+					<label for="radius" class="col-2">Radius?</label><input id="radius" type="text" name="radius" class="col-3"><span id="m"class="col-12">(kilometres)</span>
 				</div>
 				<div class="row col-12" id="buttons" >
 					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
@@ -56,9 +55,9 @@
 					<input type="checkbox"  id="music" value="4bf58dd8d48988d1e5931735,5267e4d9e4b0ec79466e48d1,4bf58dd8d48988d12f941735,4f04b10d2fb6e1c99f3db0be">
 					<label class = "mybutton col-4" for="parking" id="prk"><span></span>Parking</label>
 					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
-					<a href="#map" target="_top" id="go" class="mybutton">GO !</a>
+					<a href="#map" target="_top" id="go" class="mybutton">GO !</a><span id="activity"></span>
 				</div>
-				<span id="activity"></span>
+				
 				<input id="ll" type="text" name="ll">
 			</form>
 		</div>
@@ -75,10 +74,6 @@
 					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a>
 				</header>
 				<p id="placestogo">
-				</p>
-				<p id="mapiconcredit">
-				Maps Icons Collection https://mapicons.mapsmarker.com
-				<img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo">
 				</p>
 			</div>
 		</div>

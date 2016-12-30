@@ -83,8 +83,8 @@ table {
 }
 /*====================begin CSS for page======*/
 body{
-  font-family:Reem Kufi, sans-serif;
-  background-color:  #F3F0EB; /*#FAAC58/*rgb(246,154,50); /*orange*/
+  font-family:Reem Kufi,sans-serif;
+  background-color: #acd7c8;/*#F3F0EB; /*#FAAC58/*rgb(246,154,50); /*orange*/
 }
 
 #ropeswing{
@@ -166,13 +166,13 @@ header h1{
 	}
 }
 header h2{
-  font-family: courier new; /*'Reem Kufi', sans-serif;*/
+  font-family: courier new;
   font-size: 230%;
   position: relative;
   margin-left: 15%;
   margin-bottom: 5%;
   display: block;
-  color:#2DA7F8;/*#746F6A;*/
+  color: black;/*#2DA7F8;/*#746F6A;*/
 }
 @media screen and (max-width: 1200px) {
 	header h2{
@@ -187,7 +187,6 @@ header h2{
 	}
 }
 #results header{
-	/*background-color: rgb(246,154,50);*/
 	margin: 0;
 	position: relative;
 	z-index:1;	
@@ -210,15 +209,14 @@ header h2{
     border: 1px solid;
     box-shadow: 0 2px grey;
     border-radius: 5%;
-    color: white;
-    padding: /*1% 2%;*/;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 110%;
     width: 20%;
     margin: 0.5%;
-    font-family: courier new;/*'Reem Kufi', sans-serif;*/
+    font-family: courier new;
 }
 
 #searchAgain{
@@ -239,22 +237,15 @@ header h2{
 		width: 40%;
 	}
 }
-.mybutton:active{
-  background-color: rgb(167, 244, 66);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-  border-color: 4px solid green;
-  color: black;
-}
 
 input[type="checkbox"] {
     display:none;
 }
 
-#activity,
+/*#activity,
 #ll{
 	display:none;
-}
+}*/
 
 #go{
 	background-color: #2DA7F8;
@@ -277,6 +268,7 @@ input[type="checkbox"] {
   margin: auto;
   margin-top: 0.5%;
   padding-top: 0;
+  margin-left:2%;
 }
 @media screen and (max-width: 800px) {
     #buttons{
@@ -310,19 +302,31 @@ form{
 #date_input,
 #location_input,
 #radius,
+#query,
 label{
   font-size: 100%;
   font-family: courier new;
-  padding:0.75%;
-  margin: 0.5%;
-  margin-bottom:1%;
-  padding-bottom:0.5;
+  padding:0.5%;
+  margin: 0;
+  padding-bottom:0;
 }
 #date_input{
-	padding:0.5%;
+	padding:0;
+}
+#optional,
+#m{
+	padding:0;
+	margin-top:0;
+	margin-bottom:0;
+	position: relative;
+	right: -70%;
+	font-family: courier new;
+}
+#m{
+	right: -69%;
 }
 
-div.row label.col-1{
+div.row label.col-2{
 	font-family: 'Shadows Into Light', cursive;
 	color: #2DA7F8;
 	font-size: 150%;
@@ -330,10 +334,10 @@ div.row label.col-1{
 	padding-top: 0;
 	margin-top: 0;
 	padding-bottom:0.5%;
-	margin-right:3%;
+	margin-right:1%;
 }
 	
-}
+
 @media screen and (max-width: 350px) {
     label, #date_input, #location_input{
 		Font-size: 65%;
@@ -353,7 +357,7 @@ div.row label.col-1{
 }
 
 #results{
-	background-color: #F3F0EB; /*rgb(56,168,254);*/
+	background-color: #acd7c8;
 	height: 100vh;
 	overflow: scroll;
 }
