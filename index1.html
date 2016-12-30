@@ -20,17 +20,19 @@
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
 			</header>
-			</div>
 			<form class="col-8" >
 				<div class="row">
 				    <label for="date_input" class="col-2">When? </label><input id="date_input" type="date" name="date" class="col-3">
-					<label for="query" class="col-2">Looking for?</label><input id="query" type="text" name="query" class="col-3"><span id="optional" class="col-12">(optional)</span>
+					<label for="query" class="col-2">Looking for?</label><input id="query" type="text" name="query" class="col-3"><span id="optional" class="col-12">optional</span>
 				</div>
 				<div class="row">
 				    <label for="location_input" class="col-2">Where?</label><input id="location_input" type="text" name="location" class="col-3">
 					<label for="radius" class="col-2">Radius?</label><input id="radius" type="text" name="radius" class="col-3"><span id="m"class="col-12">(kilometres)</span>
 				</div>
-				<div class="row col-12" id="buttons" >
+						
+				<input id="ll" type="text" name="ll">
+			</form>
+			<div id ="buttons" >
 					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
 					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,52e81612bcbc57f1066b7a26,56aa371be4b08b9a8d573541,4bf58dd8d48988d15f941735">
 					<label class = "mybutton col-4" for="playcentres" id="pc"><span></span>Play Centres</label>
@@ -57,9 +59,6 @@
 					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
 					<a href="#map" target="_top" id="go" class="mybutton">GO !</a><span id="activity"></span>
 				</div>
-				
-				<input id="ll" type="text" name="ll">
-			</form>
 		</div>
 		<div class="row">
 			<div id="map" class="col-8">

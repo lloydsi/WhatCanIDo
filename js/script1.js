@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function(){
 					    var specialIcon = "images/parking.png";
 					    }
 				    else{
-					    var specialIcon = "images/mapicon.png";
+					    var specialIcon = "images/parking.png";
 					    }		
 				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon, label: labels});
 				    marker.content = contentString;
@@ -110,58 +110,118 @@ document.addEventListener('DOMContentLoaded', function(){
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
         console.log("listening");
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
-		var sports = document.getElementById("pa").addEventListener("click", changeStyle1);
-		var sports = document.getElementById("pc").addEventListener("click", changeStyle2);
-		var sports = document.getElementById("cin").addEventListener("click", changeStyle3);
-		var sports = document.getElementById("fd").addEventListener("click", changeStyle4);
-		var sports = document.getElementById("out").addEventListener("click", changeStyle5);
-		var sports = document.getElementById("spo").addEventListener("click", changeStyle6);
-		var sports = document.getElementById("bks").addEventListener("click", changeStyle7);
-		var sports = document.getElementById("mus").addEventListener("click", changeStyle8);
-		var sports = document.getElementById("shw").addEventListener("click", changeStyle9);
-		var sports = document.getElementById("wor").addEventListener("click", changeStyle10);
-		var sports = document.getElementById("musi").addEventListener("click", changeStyle11);
-		var sports = document.getElementById("prk").addEventListener("click", changeStyle12);
+		var parks = document.getElementById("parks").addEventListener("change", changeStyle1);
+		var playcenters = document.getElementById("playcentres").addEventListener("change", changeStyle2);
+		var cinemas = document.getElementById("cinema").addEventListener("change", changeStyle3);
+		var food = document.getElementById("food").addEventListener("change", changeStyle4);
+		var outdoors = document.getElementById("outdoor").addEventListener("change", changeStyle5);
+		var sports = document.getElementById("sports").addEventListener("change", changeStyle6);
+		var books = document.getElementById("books").addEventListener("change", changeStyle7);
+		var museums = document.getElementById("museum").addEventListener("change", changeStyle8);
+		var shows = document.getElementById("shows").addEventListener("change", changeStyle9);
+		var worship = document.getElementById("worship").addEventListener("change", changeStyle10);
+		var music = document.getElementById("music").addEventListener("change", changeStyle11);
+		var parking = document.getElementById("parking").addEventListener("change", changeStyle12);
 	}
 	
 	var refresh = function refresh(){
 			location.reload();
 		}
 	var changeStyle1 = function(){
-		document.getElementById("pa").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("pa").style.backgroundColor==="#FB9905") {
+			document.getElementById("pa").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("pa").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle2 = function(){
-		document.getElementById("pc").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("pc").style.backgroundColor==="#FB9905") {
+			document.getElementById("pc").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("pc").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle3 = function(){
-		document.getElementById("cin").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("cin").style.backgroundColor==="#FB9905") {
+			document.getElementById("cin").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("cin").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle4 = function(){
-		document.getElementById("fd").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("fd").style.backgroundColor==="#FB9905") {
+			document.getElementById("fd").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("fd").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle5 = function(){
-		document.getElementById("out").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("out").style.backgroundColor==="#FB9905") {
+			document.getElementById("out").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("out").style.backgroundColor="#FB9905)";
+		}
 	}
 	var changeStyle6 = function(){
-		document.getElementById("spo").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("spo").style.backgroundColor==="#FB9905") {
+			document.getElementById("spo").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("spo").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle7 = function(){
-		document.getElementById("bks").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("bks").style.backgroundColor==="#FB9905") {
+			document.getElementById("bks").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("bks").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle8 = function(){
-		document.getElementById("mus").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("mus").style.backgroundColor==="#FB9905") {
+			document.getElementById("mus").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("mus").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle9 = function(){
-		document.getElementById("shw").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("shw").style.backgroundColor==="#FB9905") {
+			document.getElementById("shw").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("shw").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle10 = function(){
-		document.getElementById("wor").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("wo").style.backgroundColor==="#FB9905") {
+			document.getElementById("wo").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("wo").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle11 = function(){
-		document.getElementById("musi").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("musi").style.backgroundColor==="#FB9905") {
+			document.getElementById("musi").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("musi").style.backgroundColor="#FB9905";
+		}
 	}
 	var changeStyle12 = function(){
-		document.getElementById("prk").style.backgroundColor="rgb(167, 244, 66)";
+		if (document.getElementById("prk").style.backgroundColor==="#FB9905") {
+			document.getElementById("prk").style.backgroundColor="rgb(167, 244, 66)";
+		}
+		else{
+			document.getElementById("prk").style.backgroundColor="#FB9905";
+		}
 	}
 	
 	
