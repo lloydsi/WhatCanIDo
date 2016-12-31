@@ -114,8 +114,12 @@ document.addEventListener('DOMContentLoaded', function(){
 			    }
 			
 		}
+		
+	
+	
     }
 	
+			
     function listen() {
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
         console.log("listening");
@@ -302,9 +306,28 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 		
 	}  
+	
+	var Eventbright= function Eventbright(){
+		var date = document.getElementById("date_input").value;
+		var xhttp = new XMLHttpRequest();
+		xhttp.addEventListener('load',processResponseEventbright);
+		var appKey = "U7NLRIHY7OYIIES2ST";
+		var personalOAuth="VLRGG4IXRONOS32YGOF3";
+		var anonOAuth ="SAZQIHQ4D7FGR4HK7MVO";
+		var place = document.getElementById("location_input").value;
+		var keywords = document.getElementById("query").value;
+		xhttp.open("GET", "https://www.eventbriteapi.com/v3/events/?token="+personalOAuth+"&q="+keywords+"&venue="+place);
+		xhttp.send();
+		}
+		
+	    var processResponseEventbright = function(){
+		    var dataEventful = JSON.parse(this.response);
+			console.log(dataEventful)
+			for(i=0;i<10;i++){
+		    console.log(dataEventful.events[0].name);}
+		}
 
     var enter=function enter(){
-		/*var radius = document.getElementbyId("radius").value;*/
 		if (document.getElementById("location_input").value=== ""){
 			alert("Please enter a location to search")
 			
@@ -314,6 +337,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.getElementById("second").style.display="initial";
 		checking();
 		MapLoc();
+		Eventbright();
 		}
 	}	
 

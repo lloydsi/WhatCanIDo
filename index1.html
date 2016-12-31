@@ -24,7 +24,16 @@
 			<form class="col-8" >
 				<div class="row">
 				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3">
-					<label for="query" class="col-1">Local Events?</label><input id="query" type="text" name="query" class="col-3"><span id="opt" class="col-12" value="child friendly">(optional)</span>
+					<label for="query" class="col-1">Local Events?</label>
+					<select id="query" class="col-3">
+					    <option value="family events" selected>Family Events</option>
+						<option value="family films">Family Films</option>
+						<option value="theatre shows">Theatre Shows</option>
+						<option value="seasonal events">Seasonal Events</option>
+						<option value="live bands">Live Bands</option>
+					</select>
+						
+					<span id="opt" class="col-12" value="child friendly">(optional)</span>
 				</div>
 				<div class="row">
 				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">

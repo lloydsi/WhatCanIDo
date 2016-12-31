@@ -245,7 +245,7 @@ header h2{
 }
 
 
-input[type="checkbox"] {
+/*input[type="checkbox"] {
     display:none;
 }
 
@@ -253,7 +253,7 @@ input[type="checkbox"] {
 #ll{
 	display:none;
 }
-
+*/
 #go{
 	background-color: #2DA7F8;
 	color: black;
