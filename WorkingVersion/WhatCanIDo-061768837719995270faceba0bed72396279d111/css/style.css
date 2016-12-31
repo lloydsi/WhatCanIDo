@@ -1,0 +1,394 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*========set up flexible grid system of 12 columns======*/
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media only screen and (max-width: 800px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+/*====================begin CSS for page======*/
+body{
+  font-family:Reem Kufi, sans-serif;
+  background-color:  rgb(204, 243, 242); /*#FAAC58/*rgb(246,154,50); /*orange*/
+}
+
+#ropeswing{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size:100%;
+  padding: 0;
+  padding-right: 15px;
+ 
+ }
+ 
+ @media screen and (max-width: 800px) {
+    #ropeswing{
+		height: 40vh;
+		padding: 0;
+		overflow:hidden;
+		background-repeat: repeat;
+		
+	}
+}
+#ropeswing img{
+  position:relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  z-index:-2;
+}
+ @media screen and (max-width: 800px) {
+	#ropeswing img{
+		height: 100%;
+		padding: 0;
+		width: 100%;	
+	}
+}
+
+header{
+  margin-left: 25%;
+  position: absolute;
+  top: 0.5%;
+  z-index:-1;
+  width: 75%;
+ }
+
+header h1{
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 500%;
+  margin-bottom: 2%;
+  margin-top:3%;
+  font-weight:bolder;
+  display: block;
+  color:#494642;
+}
+@media screen and (max-width: 1000px) {
+    header h1{
+		font-size: 400%;
+	}
+}
+@media screen and (max-width: 800px) {
+    header {
+		margin: auto;
+		background-color: rgba(255,255,255,0.9);	
+		width: 100%;
+		margin-top:10%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+    header h1{
+		margin: auto;
+		font-size: 350%;
+		text-align:center;
+	}
+}
+
+@media screen and (max-width: 350px) {
+    header{
+		margin-top: 10%;
+		height: 30vh;
+	}
+}
+header h2{
+  font-family: courier new; /*'Reem Kufi', sans-serif;*/
+  font-size: 230%;
+  position: relative;
+  margin-left: 15%;
+  margin-bottom: 5%;
+  display: block;
+  color:#2DA7F8;/*#746F6A;*/
+}
+@media screen and (max-width: 1200px) {
+	header h2{
+		font-size: 160%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+    header h2{
+		margin-left: auto;
+		text-align: center;
+	}
+}
+#results header{
+	/*background-color: rgb(246,154,50);*/
+	margin: 0;
+	position: relative;
+	z-index:1;	
+	width: 100%;
+	
+}
+#results header h2{
+	margin: 0;
+	position: relative;
+	top: 1%;
+	text-align: left;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-weight: normal;
+	font-family: 'Shadows Into Light', cursive;
+	color: #2DA7F8;
+	font-weight: bold;
+	display: inline-block;
+}
+
+.mybutton {
+    background-color: #FB9905; /*rgb(205,192,194); */
+    border: 1px solid;
+    box-shadow: 0 2px grey;
+    border-radius: 5%;
+    color: white;
+    padding: /*1% 2%;*/;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 110%;
+    width: 20%;
+    margin: 0.5%;
+    font-family: courier new;/*'Reem Kufi', sans-serif;*/
+}
+
+#searchAgain{
+	margin-top:0;
+	margin-left: 10%;
+	
+}
+
+@media screen and (max-width: 950px) {
+    .mybutton{
+		font-size: 80%;
+		width: 30%;
+	}
+}
+
+@media screen and (max-width: 350px) {
+    .mybutton{
+		font-size: 70%;
+		width: 40%;
+	}
+}
+
+
+input[type="checkbox"] {
+    display:none;
+}
+
+#activity,
+#ll{
+	display:none;
+}
+
+#go{
+	background-color: #2DA7F8;
+	color: black;
+	font-size:22px;
+	font-weight:bold;
+	font-family: 'Shadows Into Light', cursive;
+	margin:auto;
+	margin-top:1%;
+	margin-left: 30%;
+	padding:1%;
+}
+
+@media screen and (max-width: 800px) {
+    #go{
+		margin-top: 1%;
+	}
+}
+#buttons{
+  margin: auto;
+  margin-top: 0.5%;
+  padding-top: 0;
+}
+@media screen and (max-width: 800px) {
+    #buttons{
+		padding-left: 10%;
+		margin-top:1%;
+	}
+}
+
+@media screen and (max-width: 350px) {
+    #buttons{
+		padding-left: 20%;
+		margin-top:1%;
+	}
+}
+form{
+  margin: auto;
+  margin-top: 14%;
+  }
+@media screen and (max-width: 800px) {
+    form{
+		margin-top: 1%;
+		height: 60vh;
+	}
+}
+
+@media screen and (max-width: 350px) {
+    form{
+		margin: auto;
+	}
+}
+#date_input,
+#location_input,
+#radius,
+#query,
+label{
+  font-size: 100%;
+  font-family: courier new;
+  padding:0.75%;
+  margin: 0.5%;
+  margin-bottom: 0;
+  padding-bottom:0.5;
+}
+#date_input{
+	padding:0.5%;
+}
+
+#opt,
+#m{
+	padding:0;
+	position: relative;
+}
+
+#m,
+#opt{
+	margin-left: 65%;
+}
+
+div.row label.col-1{
+	font-family: 'Shadows Into Light', cursive;
+	color: #2DA7F8;
+	font-size: 150%;
+	font-weight: bold;
+	padding-top: 0;
+	margin-top: 0;
+	padding-bottom:0.5%;
+	margin-right:3%;
+}
+	
+}
+@media screen and (max-width: 350px) {
+    label, #date_input, #location_input{
+		Font-size: 65%;
+	}
+}
+
+#map{
+  height: 100vh;
+  top:0;
+  left:0;
+  padding: 0; 
+}
+@media screen and (max-width: 800px) {
+    #map{
+		height: 75vh;
+	}
+}
+
+#results{
+	background-color: rgb(204, 243, 242); /*rgb(56,168,254);*/
+	height: 100vh;
+	overflow: scroll;
+}
+div.gm-style div{
+	padding: 0;
+}
+#placestogo{
+	font-family: Reem Kufi, sans-serif;
+	font-weight: lighter;
+}
+li{
+	padding:1%;
+	font-family: courier new;
+}
+
+li a{
+	text-decoration:none;
+	color: black;
+}
+
+#mapiconcredit{
+	font-size:70%;
+	color: black;
+	font-family: courier new;
+	margin-top: 5%;
+}
+
+
