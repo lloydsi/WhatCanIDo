@@ -1,2 +1,0 @@
-# WhatCanIDo
-Coursework 2

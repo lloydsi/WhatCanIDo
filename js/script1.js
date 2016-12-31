@@ -8,8 +8,11 @@ var myMapKey = "AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o";
 		    center: where
 		    });	
     }
+	
 document.addEventListener('DOMContentLoaded', function(){
 	console.log("Dom loaded")
+	
+	document.getElementById("second").style.display="none";
 	
 	function setDefaultDate(){
 	/*set today's date as initial input in date box*/
@@ -26,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	/*find the lat and long of a placename from google maps*/
         var mapKey = "AIzaSyAweZVmZtaw8bYWarIUvRM5WT4NDgD9BP8"		
         var xhttpMapLoc = new XMLHttpRequest();   
-        xhttpMapLoc.addEventListener('load', processResponseMapLoc);
 		var add = document.getElementById("location_input").value;  /*address location from input box*/
+        xhttpMapLoc.addEventListener('load', processResponseMapLoc);
         xhttpMapLoc.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address="+add+"&key="+mapKey+"&region=uk");           
 	    xhttpMapLoc.send();
     }
@@ -45,20 +48,18 @@ document.addEventListener('DOMContentLoaded', function(){
 			
 		function FsPlaces(){
 		/*use the lat and lng to search foursquare*/
+		    var your_date =document.getElementById("date_input").value;
             var xhttp = new XMLHttpRequest();
             xhttp.addEventListener('load', processResponse); 
 			var lim = 30;    /*limit of results*/
-		    /*var radius = document.getElementById("radius").value;/* /*search radius
-			if (radius !=""){
-			     radius = Number(document.getElementById("radius").value);}
-			else{
-				radius = 1500;
-			}*/
-			var radius = 2000;
-		    var clientId = "PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW"
+		    var radius = (document.getElementById("radius").value)*1000; /*search radius*/
+			if (radius > 100000){
+				radius = 100000;
+				}
+			var clientId = "PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW"
 			var clientSecret = "GL4DEJONWD12BTHKHJAJNOY5L3SYZD3MLWHIUYXMNGOHFCTT";
 			var categoryID = String(document.getElementById("activity").innerHTML);   /*string containing venue category id's from buttons*/
-            xhttp.open("GET", "https://api.foursquare.com/v2/venues/search?ll="+ll+"&intent=browse&client_id="+clientId+"&client_secret="+clientSecret+"&v=20170101&categoryId="+categoryID+"&limit="+lim+"&radius="+radius);            
+            xhttp.open("GET", "https://api.foursquare.com/v2/venues/search?ll="+ll+"&intent=browse&client_id="+clientId+"&client_secret="+clientSecret+"&v=20170101&categoryId="+categoryID+"&limit="+lim+"&radius="+radius+"&venuePhotos=1");            
 			xhttp.send();
 			}
 					
@@ -72,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function(){
 				var startCenter={lat:Number(dataLoc.results[0].geometry.location.lat), lng:Number(dataLoc.results[0].geometry.location.lng)}
 				var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center:startCenter});
 			    for(i=0;i < data.response.venues.length;i++ ){
-				    var items = ulist.appendChild(document.createElement("li")); 
+					
+				    var li = ulist.appendChild(document.createElement("li"));
+					var a = li.appendChild(document.createElement("a"));
 				    var names = (i+1) + ".  " + data.response.venues[i].name +". ";
 				    var places = document.createTextNode(names);
 				    var lats = Number(data.response.venues[i].location.lat);/*Get the latitude and lng for Google Map*/
@@ -82,18 +85,25 @@ document.addEventListener('DOMContentLoaded', function(){
 		            var venueName = data.response.venues[i].name
 				    var venueId= data.response.venues[i].id
 				    var venueLink = 'http://foursquare.com/v/' + venueId +'?ref=PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW'
-				    var contentString = venueName+'<div id="markerwindow"><p> <a href='+venueLink+' target="_blank">More Info...</a></p></div>' 
-				    if (data.response.venues[i].categories[0].id  === "4c38df4de52ce0d596b336e1"){
-					    var specialIcon = "images/parking.png";
+				    var linkText = document.createTextNode(names);
+					var contentString = (i+1)+".  "+venueName;
+				    var iconBase = "star.png";
+				    if (data.response.venues[i].categories[0].id === "4c38df4de52ce0d596b336e1"){
+					    var specialIcon = "images/carparking.png";
 					    }
 				    else{
-					    var specialIcon = "images/parking.png";
+					    var specialIcon = "images/playground.png";
 					    }		
-				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon, label: labels});
+				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon});
 				    marker.content = contentString;
 				    var infoWindow = new google.maps.InfoWindow();
 				    google.maps.event.addListener(marker, 'click', function() {infoWindow.setContent(this.content);infoWindow.open(this.map,this)});
-         	        items.appendChild(places)
+         	        /*items.appendChild(places)*/
+					li.appendChild(a);
+					a.appendChild(linkText);
+					a.title = names;
+					a.href = venueLink
+					
 				}
 			}
 			else{
@@ -110,187 +120,184 @@ document.addEventListener('DOMContentLoaded', function(){
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
         console.log("listening");
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
-		var parks = document.getElementById("parks").addEventListener("change", changeStyle1);
-		var playcenters = document.getElementById("playcentres").addEventListener("change", changeStyle2);
-		var cinemas = document.getElementById("cinema").addEventListener("change", changeStyle3);
-		var food = document.getElementById("food").addEventListener("change", changeStyle4);
-		var outdoors = document.getElementById("outdoor").addEventListener("change", changeStyle5);
-		var sports = document.getElementById("sports").addEventListener("change", changeStyle6);
-		var books = document.getElementById("books").addEventListener("change", changeStyle7);
-		var museums = document.getElementById("museum").addEventListener("change", changeStyle8);
-		var shows = document.getElementById("shows").addEventListener("change", changeStyle9);
-		var worship = document.getElementById("worship").addEventListener("change", changeStyle10);
-		var music = document.getElementById("music").addEventListener("change", changeStyle11);
-		var parking = document.getElementById("parking").addEventListener("change", changeStyle12);
+		document.getElementById("pa").addEventListener("click",changeStyleParks);
+		document.getElementById("pc").addEventListener("click", changeStylePlaycentres);
+		document.getElementById("cin").addEventListener("click", changeStyleCinema);
+		document.getElementById("fd").addEventListener("click", changeStyleFood);
+		document.getElementById("out").addEventListener("click", changeStyleOutdoor);
+		document.getElementById("spo").addEventListener("click", changeStyleSports);
+		document.getElementById("bks").addEventListener("click", changeStyleBooks);
+		document.getElementById("mus").addEventListener("click", changeStyleMuseum);
+		document.getElementById("shw").addEventListener("click", changeStyleShows);
+		document.getElementById("wor").addEventListener("click", changeStyleWorship);
+		document.getElementById("musi").addEventListener("click", changeStyleMusic);
+		document.getElementById("prk").addEventListener("click", changeStyleParking);
 	}
 	
 	var refresh = function refresh(){
 			location.reload();
+			document.getElementById("second").style.display="none";
+	}
+	var changeStyleParks = function(){
+		if (document.getElementById("parks").checked){
+			document.getElementById("pa").style.backgroundColor ="#FB9905";
 		}
-	var changeStyle1 = function(){
-		if (document.getElementById("pa").style.backgroundColor==="#FB9905") {
+		else{
 			document.getElementById("pa").style.backgroundColor="rgb(167, 244, 66)";
 		}
-		else{
-			document.getElementById("pa").style.backgroundColor="#FB9905";
-		}
 	}
-	var changeStyle2 = function(){
-		if (document.getElementById("pc").style.backgroundColor==="#FB9905") {
-			document.getElementById("pc").style.backgroundColor="rgb(167, 244, 66)";
-		}
-		else{
+	var changeStylePlaycentres = function(){
+		if (document.getElementById("playcentres").checked){
 			document.getElementById("pc").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle3 = function(){
-		if (document.getElementById("cin").style.backgroundColor==="#FB9905") {
-			document.getElementById("cin").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		    document.getElementById("pc").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleCinema = function(){
+		if(document.getElementById("cinema").checked){
 			document.getElementById("cin").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle4 = function(){
-		if (document.getElementById("fd").style.backgroundColor==="#FB9905") {
-			document.getElementById("fd").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		    document.getElementById("cin").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleFood = function(){
+		if(document.getElementById("food").checked){
 			document.getElementById("fd").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle5 = function(){
-		if (document.getElementById("out").style.backgroundColor==="#FB9905") {
-			document.getElementById("out").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
-			document.getElementById("out").style.backgroundColor="#FB9905)";
+		    document.getElementById("fd").style.backgroundColor="rgb(167, 244, 66)";
 		}
 	}
-	var changeStyle6 = function(){
-		if (document.getElementById("spo").style.backgroundColor==="#FB9905") {
-			document.getElementById("spo").style.backgroundColor="rgb(167, 244, 66)";
-		}
-		else{
+	var changeStyleOutdoor = function(){
+		if (document.getElementById("outdoor").checked){
+		document.getElementById("out").style.backgroundColor="#FB9905";
+	}
+	    else{
+		document.getElementById("out").style.backgroundColor="rgb(167, 244, 66)";
+	    }
+	}
+	var changeStyleSports = function(){
+		if(document.getElementById("sports").checked){
 			document.getElementById("spo").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle7 = function(){
-		if (document.getElementById("bks").style.backgroundColor==="#FB9905") {
-			document.getElementById("bks").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		document.getElementById("spo").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleBooks = function(){
+		if(document.getElementById("books").checked){
 			document.getElementById("bks").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle8 = function(){
-		if (document.getElementById("mus").style.backgroundColor==="#FB9905") {
-			document.getElementById("mus").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		    document.getElementById("bks").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleMuseum = function(){
+		if(document.getElementById("museum").checked){
 			document.getElementById("mus").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle9 = function(){
-		if (document.getElementById("shw").style.backgroundColor==="#FB9905") {
-			document.getElementById("shw").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		    document.getElementById("mus").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleShows = function(){
+		if(document.getElementById("shows").checked){
 			document.getElementById("shw").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle10 = function(){
-		if (document.getElementById("wo").style.backgroundColor==="#FB9905") {
-			document.getElementById("wo").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
-			document.getElementById("wo").style.backgroundColor="#FB9905";
+		    document.getElementById("shw").style.backgroundColor="rgb(167, 244, 66)";
 		}
 	}
-	var changeStyle11 = function(){
-		if (document.getElementById("musi").style.backgroundColor==="#FB9905") {
-			document.getElementById("musi").style.backgroundColor="rgb(167, 244, 66)";
+	var changeStyleWorship = function(){
+		if(document.getElementById("worship").checked){
+			document.getElementById("wor").style.backgroundColor="#FB9905";
 		}
 		else{
+		    document.getElementById("wor").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}
+	var changeStyleMusic = function(){
+		if(document.getElementById("music").checked){
 			document.getElementById("musi").style.backgroundColor="#FB9905";
 		}
-	}
-	var changeStyle12 = function(){
-		if (document.getElementById("prk").style.backgroundColor==="#FB9905") {
-			document.getElementById("prk").style.backgroundColor="rgb(167, 244, 66)";
-		}
 		else{
+		    document.getElementById("musi").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}	
+	var changeStyleParking = function(){
+		if(document.getElementById("parking").checked){
 			document.getElementById("prk").style.backgroundColor="#FB9905";
 		}
-	}
+		else{
+		    document.getElementById("prk").style.backgroundColor="rgb(167, 244, 66)";
+		}
+	}	
 	
 	
 	function checking(){
 		/* if checkboxes are checked then their values are used to search Foursquare category ids*/
 		document.getElementById("activity").innerHTML="";
-		var parks = document.getElementById("parks").checked;
-		var playcentres = document.getElementById("playcentres").checked;
-		var cinema = document.getElementById("cinema").checked;
-		var food = document.getElementById("food").checked;
-		var outdoor = document.getElementById("outdoor").checked;
-		var sports = document.getElementById("sports").checked;
-		var books = document.getElementById("books").checked;
-		var museum = document.getElementById("museum").checked;
-		var shows = document.getElementById("shows").checked;
-		var worship = document.getElementById("worship").checked;
-		var music = document.getElementById("music").checked;
-		var parking = document.getElementById("parking").checked;
-		
-		if (sports === true){
-			    var sportsId = document.getElementById("sports").value
-				var activity = document.getElementById("activity").innerHTML+sportsId;
-				document.getElementById("activity").innerHTML=activity;
-		}
-		
-		if (parks === true){
+				
+		if (document.getElementById("parks").checked){
 			    var parksId = document.getElementById("parks").value;
 				var activity = document.getElementById("activity").innerHTML+","+parksId;
-				document.getElementById("activity").innerHTML=activity;
-				
+				document.getElementById("activity").innerHTML=activity;	
 		}
-		if (cinema === true){
+		if (document.getElementById("playcentres").checked){
+			    var playcentresId = document.getElementById("playcentres").value;
+				var activity = document.getElementById("activity").innerHTML+","+playcentresId;
+				document.getElementById("activity").innerHTML=activity;	
+		}
+		if (document.getElementById("cinema").checked){
 			    var cinemaId=document.getElementById("cinema").value;
 				var activity = document.getElementById("activity").innerHTML+","+cinemaId;	
 				document.getElementById("activity").innerHTML=activity;
 		}
-		if (food=== true){
+		if (document.getElementById("food").checked){
 			    var foodId=document.getElementById("food").value;
 				var activity = document.getElementById("activity").innerHTML+","+foodId;
 				document.getElementById("activity").innerHTML=activity;
 		}
-		if (outdoor === true){
+		if (document.getElementById("outdoor").checked){
 			    var outdoorId=document.getElementById("outdoor").value;
 				var activity = document.getElementById("activity").innerHTML+","+outdoorId;
 				document.getElementById("activity").innerHTML=activity;
 		}
-		if (sports === true){
-			    var sportsId=document.getElementById("sports").value;
+		if (document.getElementById("sports").checked){
+			    var sportsId = document.getElementById("sports").value
 				var activity = document.getElementById("activity").innerHTML+","+sportsId;
 				document.getElementById("activity").innerHTML=activity;
 		}
-		if (museum === true){
+		if (document.getElementById("books").checked){
+			    var booksId=document.getElementById("books").value;
+				var activity = document.getElementById("activity").innerHTML+","+booksId;
+				document.getElementById("activity").innerHTML=activity;
+		}
+		if (document.getElementById("museum").checked){
 			    var museumId=document.getElementById("museum").value;
 				var activity = document.getElementById("activity").innerHTML+","+museumId;	
                 document.getElementById("activity").innerHTML=activity;				
 		}
-		if (worship === true){
+		if (worship = document.getElementById("worship").checked){
 			    var worshipId=document.getElementById("worship").value;
 				var activity = document.getElementById("activity").innerHTML+","+worshipId;	
                 document.getElementById("activity").innerHTML=activity;				
 		}
-		if (music === true){
+		if (document.getElementById("music").checked){
 			    var musicId=document.getElementById("music").value;
 				var activity = document.getElementById("activity").innerHTML+","+musicId;	
                 document.getElementById("activity").innerHTML=activity;				
 		}
-		if (parking === true){
+		if (document.getElementById("shows").checked){
+			    var showsId=document.getElementById("shows").value;
+				var activity = document.getElementById("activity").innerHTML+","+showsId;	
+                document.getElementById("activity").innerHTML=activity;				
+		}
+		if (document.getElementById("parking").checked){
 			    var parkingId=document.getElementById("parking").value;
-				var activity = document.getElementById("activity").innerHTML+","+document.getElementById("parking").value;	
+				var activity = document.getElementById("activity").innerHTML+","+parkingId;
                 document.getElementById("activity").innerHTML=activity;				
 		}
 		
@@ -298,13 +305,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var enter=function enter(){
 		/*var radius = document.getElementbyId("radius").value;*/
+		if (document.getElementById("location_input").value=== ""){
+			alert("Please enter a location to search")
+			
+		}
+		else{
+		document.getElementById("top").style.display="none";
+		document.getElementById("second").style.display="initial";
 		checking();
-	    var your_date =document.getElementById("date_input").value;
-		var place =document.getElementById("location_input").value
-		console.log(your_date);
-		console.log(place);
-		console.log(activity);
 		MapLoc();
+		}
 	}	
 
 	

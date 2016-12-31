@@ -13,54 +13,55 @@
 		<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 	</head>
 	<body>
-		<div class="row">
+		<div class="row" id="top">
 			<div id="ropeswing" class= "col-4">
-			<img src="images/activity.jpg" alt="children swinging on a rope"/>
+			<img src="images/EditedActivity.png" alt="children swinging on a rope"/>
 			<header>
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
 			</header>
+			</div>
 			<form class="col-8" >
 				<div class="row">
-				    <label for="date_input" class="col-2">When? </label><input id="date_input" type="date" name="date" class="col-3">
-					<label for="query" class="col-2">Looking for?</label><input id="query" type="text" name="query" class="col-3"><span id="optional" class="col-12">optional</span>
+				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3">
+					<label for="query" class="col-1">Local Events?</label><input id="query" type="text" name="query" class="col-3"><span id="opt" class="col-12" value="child friendly">(optional)</span>
 				</div>
 				<div class="row">
-				    <label for="location_input" class="col-2">Where?</label><input id="location_input" type="text" name="location" class="col-3">
-					<label for="radius" class="col-2">Radius?</label><input id="radius" type="text" name="radius" class="col-3"><span id="m"class="col-12">(kilometres)</span>
+				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">
+					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5"><span id="m" class="col-12">(kilometres)</span>
 				</div>
-						
-				<input id="ll" type="text" name="ll">
-			</form>
-			<div id ="buttons" >
+				<div class="row col-12" id="buttons" >
 					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
-					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,52e81612bcbc57f1066b7a26,56aa371be4b08b9a8d573541,4bf58dd8d48988d15f941735">
+					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,4bf58dd8d48988d1e7941735,4bf58dd8d48988d15d941735">
 					<label class = "mybutton col-4" for="playcentres" id="pc"><span></span>Play Centres</label>
-					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e7941735,5744ccdfe4b0c0459246b4b5">
+					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79e6,52e81612bcbc57f1066b79eb">
 					<label class = "mybutton col-4" for="cinema" id="cin"><span></span>Cinema</label>
 					<input type="checkbox" id="cinema" value="4bf58dd8d48988d17f941735">
 					<label class = "mybutton col-4" for="food" id="fd"><span></span>Food</label>
-					<input type="checkbox"  id="food" value="4bf58dd8d48988d16d941735">
+					<input type="checkbox"  id="food" value="4bf58dd8d48988d16c941735,4bf58dd8d48988d16d941735,4bf58dd8d48988d1e0931735,4bf58dd8d48988d1d3941735,4bf58dd8d48988d146941735,4bf58dd8d48988d1c7941735,4bf58dd8d48988d16e941735">
 					<label class = "mybutton col-4" for="outdoor" id="out"><span></span>Outdoor</label>
-					<input type="checkbox"  id="outdoor" value="4d4b7105d754a06377d81259">
+					<input type="checkbox"  id="outdoor" value="4bf58dd8d48988d182941735,4eb1baf03b7b2c5b1d4306ca,50aaa49e4b90af0d42d5de11,56aa371be4b08b9a8d57355e,4bf58dd8d48988d17b941735,4bf58dd8d48988d193941735,52741d85e4b0d5d1e3c6a6d9,4f4528bc4b90abdf24c9de85">
 					<label class = "mybutton col-4" for="sports" id="spo"><span></span>Sports</label>
-					<input type="checkbox"  id="sports" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79ea,52e81612bcbc57f1066b79e6,52e81612bcbc57f1066b7a44">
+					<input type="checkbox"  id="sports" value="4bf58dd8d48988d1e3931735,52e81612bcbc57f1066b79e9,4bf58dd8d48988d184941735,4bf58dd8d48988d175941735">
 					<label class = "mybutton col-4" for="books" id="bks" ><span></span>Books</label>
-					<input type="checkbox"  id="books" value="4bf58dd8d48988d12f941735">
+					<input type="checkbox"  id="books" value="4bf58dd8d48988d114951735">
 					<label class = "mybutton col-3" for="museum" id="mus"><span></span>Museums</label>
-					<input type="checkbox"  id="museum" value="4bf58dd8d48988d190941735">
+					<input type="checkbox"  id="museum" value="4bf58dd8d48988d181941735">
 					<label class = "mybutton col-4" for="shows" id="shw"><span></span>Shows</label>
-					<input type="checkbox"  id="shows" value="56aa371be4b08b9a8d573532,56aa371be4b08b9a8d573532,56aa371be4b08b9a8d573532">
+					<input type="checkbox"  id="shows" value="4bf58dd8d48988d1f2931735">
 					<label class = "mybutton col-4" for="worship" id="wor"><span></span>Worship</label>
-					<input type="checkbox"  id="worship" value="4bf58dd8d48988d131941735,">
+					<input type="checkbox"  id="worship" value="4bf58dd8d48988d131941735">
 					<label class = "mybutton col-4" for= "music" id="musi"><span></span>Music</label>
-					<input type="checkbox"  id="music" value="4bf58dd8d48988d1e5931735,5267e4d9e4b0ec79466e48d1,4bf58dd8d48988d12f941735,4f04b10d2fb6e1c99f3db0be">
+					<input type="checkbox"  id="music" value="5267e4d9e4b0ec79466e48c7">
 					<label class = "mybutton col-4" for="parking" id="prk"><span></span>Parking</label>
 					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
-					<a href="#map" target="_top" id="go" class="mybutton">GO !</a><span id="activity"></span>
+					<a href="#map" target="_top" id="go" class="mybutton">GO !</a>
 				</div>
+				<span id="activity"></span>
+				<input id="ll" type="text" name="ll">
+			</form>
 		</div>
-		<div class="row">
+		<div class="row" id="second">
 			<div id="map" class="col-8">
 				<script async defer
 					src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o&callback=initMap">
@@ -73,6 +74,10 @@
 					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a>
 				</header>
 				<p id="placestogo">
+				</p>
+				<p id="mapiconcredit">
+				Maps Icons Collection https://mapicons.mapsmarker.com
+				<img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo">
 				</p>
 			</div>
 		</div>
