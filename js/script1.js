@@ -4,7 +4,7 @@ var myMapKey = "AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o";
 	/*initialise the map*/
 	    var where = {lat: 51.4816, lng: -3.1791};
 	    var map = new google.maps.Map(document.getElementById('map'), {
-		    zoom: 12,
+		    zoom: 8,
 		    center: where
 		    });	
     }
@@ -16,20 +16,28 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	function setDefaultDate(){
 	/*set today's date as initial input in date box*/
-		var todaysDate = new Date()
+		var todaysDate = new Date();
 		var day =todaysDate.getDate();
+		var day=Number(day);
 		var month= todaysDate.getMonth();
-		month=Number(month)+1;
+		var month=Number(month)+1;
+		if (month <10){
+			var month="0"+String(month);
+		}
+		if (day < 10){
+			var day = "0"+ String(day);
+		}
 		var year=todaysDate.getFullYear();
-		today=(year+"-"+month+"-"+day);
-		document.getElementById("date_input").value=today
+		today=(year + "-" + month + "-" + day);
+		document.getElementById("date_input").value=today;
 	}
 	
 	function MapLoc(){
 	/*find the lat and long of a placename from google maps*/
-        var mapKey = "AIzaSyAweZVmZtaw8bYWarIUvRM5WT4NDgD9BP8"		
+        var mapKey = "AIzaSyAweZVmZtaw8bYWarIUvRM5WT4NDgD9BP8";	
         var xhttpMapLoc = new XMLHttpRequest();   
-		var add = document.getElementById("location_input").value;  /*address location from input box*/
+		var add =document.getElementById("location_input").value;  /*address location from input box*/
+		console.log("add" +add)
         xhttpMapLoc.addEventListener('load', processResponseMapLoc);
         xhttpMapLoc.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address="+add+"&key="+mapKey+"&region=uk");           
 	    xhttpMapLoc.send();
@@ -37,22 +45,55 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	var processResponseMapLoc = function() {
 	/*process the responses of latitude and lontitude search*/
-		console.log("processing")
+		console.log("processing");
         var dataLoc = JSON.parse(this.response);
-	    console.log(dataLoc.results[0].geometry.location.lat + "," + dataLoc.results[0].geometry.location.lng);   /*get the lat and long of the place*/
-		var ll = document.getElementById("ll")
+		try {
+	        console.log(dataLoc.results[0].geometry.location.lat + "," + dataLoc.results[0].geometry.location.lng);   /*get the lat and long of the place*/
+		}
+	    catch(err) {
+			    location.reload();
+			    document.getElementById("second").style.display="none";
+				document.getElementById("location_input").style.backgroundColor="red";
+        }
+		var ll = document.getElementById("ll");
 		var ll = (ll.value=dataLoc.results[0].geometry.location.lat + "," + dataLoc.results[0].geometry.location.lng);
+		sunset();
 		FsPlaces();
 		
-		console.log("ll is "+ll);
+		console.log("ll is "+ll); 
 			
+		function sunset(){
+		/*finds the location and checks for sunrise and sunset times*/
+            var lat =dataLoc.results[0].geometry.location.lat;
+            var lng = dataLoc.results[0].geometry.location.lng;
+			var date = document.getElementById("date_input").value;
+            console.log("lat is"+lat);
+            console.log("lng is"+lng);
+			console.log("date is"+date);
+            var xhttpSunset = new XMLHttpRequest();
+            xhttpSunset.addEventListener('load', processResponseSunset);
+			xhttpSunset.open("GET", "http://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lng + "&date=" + date);
+            xhttpSunset.send();
+			
+		}
+			function processResponseSunset() {
+			/*sets the sunrise and sunset times for the date chosen*/
+			    console.log("parsing");
+                var dataSunset = JSON.parse(this.response);
+				var date = document.getElementById("date_input").value;
+                console.log(dataSunset);
+                document.getElementById("sunrise").innerHTML="Sunrise on "+ date + " is at "+dataSunset.results.sunrise;
+                document.getElementById("sunset").innerHTML="Sunset on "+ date + " is at "+dataSunset.results.sunset;
+		}	
+		
 		function FsPlaces(){
 		/*use the lat and lng to search foursquare*/
 		    var your_date =document.getElementById("date_input").value;
             var xhttp = new XMLHttpRequest();
             xhttp.addEventListener('load', processResponse); 
 			var lim = 30;    /*limit of results*/
-		    var radius = (document.getElementById("radius").value)*1000; /*search radius*/
+		    var radius = (document.getElementById("radius").value)
+		    var radius = radius*1000; /*search radius*/
 			if (radius > 100000){
 				radius = 100000;
 				}
@@ -70,10 +111,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			var para=document.getElementById("placestogo");
 			var ulist=para.appendChild(document.createElement("ol"));
 			if (data.response.venues.length!=0){
-				var startCenter={lat:Number(dataLoc.results[0].geometry.location.lat), lng:Number(dataLoc.results[0].geometry.location.lng)}
+				var startCenter={lat:Number(dataLoc.results[0].geometry.location.lat), lng:Number(dataLoc.results[0].geometry.location.lng)};
 				var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center:startCenter});
 			    for(i=0;i < data.response.venues.length;i++ ){
-					
 				    var li = ulist.appendChild(document.createElement("li"));
 					var a = li.appendChild(document.createElement("a"));
 				    var names = (i+1) + ".  " + data.response.venues[i].name +". ";
@@ -82,18 +122,70 @@ document.addEventListener('DOMContentLoaded', function(){
 				    var lngs = Number(data.response.venues[i].location.lng);
 			        var where = {lat: lats, lng: lngs};   
 				    var labels = (i+1) + ".";
-		            var venueName = data.response.venues[i].name
-				    var venueId= data.response.venues[i].id
-				    var venueLink = 'http://foursquare.com/v/' + venueId +'?ref=PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW'
+		            var venueName = data.response.venues[i].name;
+				    var venueId= data.response.venues[i].id;
+				    var venueLink = 'http://foursquare.com/v/' + venueId +'?ref=PRS3ZGZSJIAI0A12KIP15VIY12ITIGFRBFVCRKRGF02AUVYW';
 				    var linkText = document.createTextNode(names);
-					var contentString = (i+1)+".  "+venueName;
+					var contentString = "<div><h2><a href="+venueLink+">"+(i+1)+"."+ venueName+"</a></h></div";
 				    var iconBase = "star.png";
-				    if (data.response.venues[i].categories[0].id === "4c38df4de52ce0d596b336e1"){
-					    var specialIcon = "images/carparking.png";
-					    }
-				    else{
-					    var specialIcon = "images/playground.png";
-					    }		
+				    switch (data.response.venues[i].categories[0].id){
+					/*changes the map marker depening upon activity searched*/
+						default:
+							var specialIcon = "images/default.png"
+							break;
+						case "4c38df4de52ce0d596b336e1":
+					        var specialIcon = "images/carparking.png";
+							break;
+						case "4bf58dd8d48988d163941735":
+						case "4bf58dd8d48988d1e7941735":
+						case "4bf58dd8d48988d15d941735":
+						    var specialIcon = "images/tree.png";
+							break;
+						case "4bf58dd8d48988d1e4931735":
+						case "52e81612bcbc57f1066b79e6":
+						case "52e81612bcbc57f1066b79eb":
+						    var specialIcon = "images/playcentres.png"
+							break;
+						case "4bf58dd8d48988d17f941735":
+						    var specialIcon = "images/cinema.png";
+							break;
+					  	case "4bf58dd8d48988d16e941735":
+						case "4bf58dd8d48988d16d941735":
+						case "4bf58dd8d48988d1c7941735":
+						    var specialIcon = "images/food.png";
+							break;
+						case "4bf58dd8d48988d182941735":
+						case "4eb1baf03b7b2c5b1d4306ca":
+						case "50aaa49e4b90af0d42d5de11":
+						case "56aa371be4b08b9a8d57355e":
+						case "4bf58dd8d48988d17b941735":
+						case "4bf58dd8d48988d193941735":
+						case "52741d85e4b0d5d1e3c6a6d9":
+						case "4f4528bc4b90abdf24c9de85":
+						    var specialIcon = "images/outdoors1.png";
+							break;
+						case "4bf58dd8d48988d1e3931735":
+						case "52e81612bcbc57f1066b79e9":
+						case "4bf58dd8d48988d184941735":
+						case "4bf58dd8d48988d175941735":
+						    var specialIcon = "images/outdoors.png";
+							break;
+						case "4bf58dd8d48988d114951735":
+						    var specialIcon = "images/books.png";
+							break;
+						case "4bf58dd8d48988d181941735":
+						    var specialIcon = "images/museum.png";
+							break;
+						case "4bf58dd8d48988d1f2931735":
+						    var specialIcon = "images/show.png";
+							break;
+						case "4bf58dd8d48988d131941735":
+						    var specialIcon = "images/worship.png";
+							break;
+						case "5267e4d9e4b0ec79466e48c7":
+						    var specialIcon = "images/music.png";
+							break;
+					}
 				    var marker = new google.maps.Marker({position: where, map: map, icon: specialIcon});
 				    marker.content = contentString;
 				    var infoWindow = new google.maps.InfoWindow();
@@ -102,25 +194,21 @@ document.addEventListener('DOMContentLoaded', function(){
 					li.appendChild(a);
 					a.appendChild(linkText);
 					a.title = names;
-					a.href = venueLink
-					
+					a.href = venueLink;
 				}
 			}
 			else{
-				var items = ulist.appendChild(document.createElement("li"))
-				var warning = "Sorry we cannot find any places for your selection.  Please try again and perhaps widen your search area."
+			/* Error - no places found message*/
+				var items = ulist.appendChild(document.createElement("li"));
+				var warning = "Sorry we cannot find any places for your selection.  Please try again and perhaps widen your search area.";
 				var warning1 = document.createTextNode(warning);
-				items.appendChild(warning1)
+				items.appendChild(warning1);
 			    }
-			
 		}
-		
+	}
 	
-	
-    }
-	
-			
-    function listen() {
+	function listen() {
+	/* Listen for changes to the activity buttons etc */
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
         console.log("listening");
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
@@ -241,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	
 	function checking(){
-		/* if checkboxes are checked then their values are used to search Foursquare category ids*/
+	/* if checkboxes are checked then their values are used to search Foursquare category ids*/
 		document.getElementById("activity").innerHTML="";
 				
 		if (document.getElementById("parks").checked){
@@ -306,39 +394,51 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 		
 	}  
-	
-	var Eventbright= function Eventbright(){
+	/*
+	var Eventful= function Eventful(){
 		var date = document.getElementById("date_input").value;
 		var xhttp = new XMLHttpRequest();
-		xhttp.addEventListener('load',processResponseEventbright);
-		var appKey = "U7NLRIHY7OYIIES2ST";
-		var personalOAuth="VLRGG4IXRONOS32YGOF3";
-		var anonOAuth ="SAZQIHQ4D7FGR4HK7MVO";
+		xhttp.addEventListener('load',processResponseEventful);
+		var appKey = "Gg8vsHG9Skc3TC2N";
+		var OAuthConsumer="643957f1b9e1d6c14069";
+		var OAuthSecret="fc3d3d5322a13cdf9f9b";
 		var place = document.getElementById("location_input").value;
 		var keywords = document.getElementById("query").value;
-		xhttp.open("GET", "https://www.eventbriteapi.com/v3/events/?token="+personalOAuth+"&q="+keywords+"&venue="+place);
+		console.log(keywords);
+		/*xhttp.open("GET", "https://www.eventbriteapi.com/v3/events/?token="+personalOAuth+"&q="+keywords+"&venue="+place);*//*
+		xhttp.open("GET","http://api.eventful.com/rest/events/search/get?oauth_consumer_key="+OAuthConsumer+"&oauth_consumer_secret=fc3d3d5322a13cdf9f9b&app_key="+appKey+"&q="+keywords+"&l="+place+'"');
 		xhttp.send();
 		}
 		
-	    var processResponseEventbright = function(){
+	    var processResponseEventful = function(){
 		    var dataEventful = JSON.parse(this.response);
-			console.log(dataEventful)
+			console.log(dataEventful);
 			for(i=0;i<10;i++){
 		    console.log(dataEventful.events[0].name);}
-		}
-
+		}*/
+       
     var enter=function enter(){
-		if (document.getElementById("location_input").value=== ""){
-			alert("Please enter a location to search")
-			
+		checking();
+		if ((document.getElementById("location_input").value==="")||(document.getElementById("activity").innerHTML==="")){
+			if (document.getElementById("activity").innerHTML===""){
+				if (document.getElementById("location_input").value===""){
+					alert("Please choose a location and activity");
+				}
+				else{
+					alert("Please choose an activity");
+			    }
+			}
+			else{
+			alert("Please choose a location to search");
+			}
 		}
 		else{
-		document.getElementById("top").style.display="none";
-		document.getElementById("second").style.display="initial";
-		checking();
-		MapLoc();
-		Eventbright();
+			document.getElementById("top").style.display="none";
+		    document.getElementById("second").style.display="initial";
+		    MapLoc();
+		     /*Eventful();*/
 		}
+				
 	}	
 
 	

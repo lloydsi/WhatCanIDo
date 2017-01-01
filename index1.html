@@ -32,12 +32,12 @@
 						<option value="seasonal events">Seasonal Events</option>
 						<option value="live bands">Live Bands</option>
 					</select>
-						
-					<span id="opt" class="col-12" value="child friendly">(optional)</span>
+					<span id="opt" class="col-12">(optional)</span>
 				</div>
 				<div class="row">
 				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">
-					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5"><span id="m" class="col-12">(kilometres)</span>
+					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5">
+					<span id="m" class="col-12"><span id="radiusmessage"></span>(kilometres)</span>
 				</div>
 				<div class="row col-12" id="buttons" >
 					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
@@ -47,7 +47,7 @@
 					<label class = "mybutton col-4" for="cinema" id="cin"><span></span>Cinema</label>
 					<input type="checkbox" id="cinema" value="4bf58dd8d48988d17f941735">
 					<label class = "mybutton col-4" for="food" id="fd"><span></span>Food</label>
-					<input type="checkbox"  id="food" value="4bf58dd8d48988d16c941735,4bf58dd8d48988d16d941735,4bf58dd8d48988d1e0931735,4bf58dd8d48988d1d3941735,4bf58dd8d48988d146941735,4bf58dd8d48988d1c7941735,4bf58dd8d48988d16e941735">
+					<input type="checkbox"  id="food" value="4bf58dd8d48988d16e941735,4bf58dd8d48988d16d941735,4bf58dd8d48988d1c7941735">
 					<label class = "mybutton col-4" for="outdoor" id="out"><span></span>Outdoor</label>
 					<input type="checkbox"  id="outdoor" value="4bf58dd8d48988d182941735,4eb1baf03b7b2c5b1d4306ca,50aaa49e4b90af0d42d5de11,56aa371be4b08b9a8d57355e,4bf58dd8d48988d17b941735,4bf58dd8d48988d193941735,52741d85e4b0d5d1e3c6a6d9,4f4528bc4b90abdf24c9de85">
 					<label class = "mybutton col-4" for="sports" id="spo"><span></span>Sports</label>
@@ -82,11 +82,15 @@
 					<h2>  Why not try ...... </h2>
 					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a>
 				</header>
+				<div class="row">
+				<p id="sunrise">sunrise</p>
+				<p id="sunset">sunset</p>
+				</div>
 				<p id="placestogo">
 				</p>
 				<p id="mapiconcredit">
-				Maps Icons Collection https://mapicons.mapsmarker.com
-				<img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo">
+				<img src="images/foursquareicon.png">
+				<a href="https://mapicons.mapsmarker.com"><img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo"></a?=>
 				</p>
 			</div>
 		</div>

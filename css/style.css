@@ -245,7 +245,7 @@ header h2{
 }
 
 
-/*input[type="checkbox"] {
+input[type="checkbox"] {
     display:none;
 }
 
@@ -253,7 +253,12 @@ header h2{
 #ll{
 	display:none;
 }
-*/
+
+#sunrise,
+#sunset{
+	padding:1%;
+	color: #FB9905;
+}
 #go{
 	background-color: #2DA7F8;
 	color: black;
