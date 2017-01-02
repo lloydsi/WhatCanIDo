@@ -15,7 +15,7 @@
 	<body>
 		<div class="row" id="top">
 			<div id="ropeswing" class= "col-4">
-			<img src="images/EditedActivity.png" alt="children swinging on a rope"/>
+			<img src="images/EditedActivity.png" alt="children swinging on a rope showing this is a site for family fun time activities"/>
 			<header>
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
@@ -23,25 +23,26 @@
 			</div>
 			<form class="col-8" >
 				<div class="row">
-				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3">
+				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3"><!--default date added as today from javascript - may have problems with some browsers-->
 					<label for="query" class="col-1">Local Events?</label>
-					<select id="query" class="col-3">
+					<select id="query" class="col-3"><!--dropdown input for Eventful-->
 					    <option value="family events" selected>Family Events</option>
 						<option value="family films">Family Films</option>
 						<option value="theatre shows">Theatre Shows</option>
 						<option value="seasonal events">Seasonal Events</option>
 						<option value="live bands">Live Bands</option>
 					</select>
-					<span id="opt" class="col-12">(optional)</span>
+					<span id="opt" class="col-12">(optional)</span><!--information for user-->
 				</div>
 				<div class="row">
-				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3">
-					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5">
+				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3"><!--input to search lat long and then for venues-->
+					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5"><!--this gets multiplied by 1000 to create metres radius in js-->
 					<span id="m" class="col-12"><span id="radiusmessage"></span>(kilometres)</span>
 				</div>
-				<div class="row col-12" id="buttons" >
-					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label>
+				<div class="row col-12" id="buttons" ><!--although id of buttons these are checkboxes which are hidden and labels styled as buttons-->
+					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label><!--value attribute is the category id for foursquare-->
 					<input  type="checkbox" id="parks" value="4bf58dd8d48988d163941735,4bf58dd8d48988d1e7941735,4bf58dd8d48988d15d941735">
+					
 					<label class = "mybutton col-4" for="playcentres" id="pc"><span></span>Play Centres</label>
 					<input type="checkbox" id="playcentres" value="4bf58dd8d48988d1e4931735,52e81612bcbc57f1066b79e6,52e81612bcbc57f1066b79eb">
 					<label class = "mybutton col-4" for="cinema" id="cin"><span></span>Cinema</label>
@@ -66,13 +67,13 @@
 					<input type="checkbox"  id="parking" value="4c38df4de52ce0d596b336e1">
 					<a href="#map" target="_top" id="go" class="mybutton">GO !</a>
 				</div>
-				<span id="activity"></span>
-				<input id="ll" type="text" name="ll">
+				<span id="activity"></span><!--hidden - just collects id info -->
+				<input id="ll" type="text" name="ll"><!--hidden - just used to collect lat long info-->
 			</form>
 		</div>
 		<div class="row" id="second">
 			<div id="map" class="col-8">
-				<script async defer
+				<script async defer><!--initialises the map-->
 					src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o&callback=initMap">
 				</script>
 
@@ -80,17 +81,17 @@
 			<div id="results" class="col-4">
 				<header>
 					<h2>  Why not try ...... </h2>
-					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a>
+					<a href="#ropeswing" target="_top" id="searchAgain" class="mybutton">Search Again</a><!--reloads the page resetting everything-->
 				</header>
 				<div class="row">
-				<p id="sunrise">sunrise</p>
+				<p id="sunrise">sunrise</p><!--collects the sunrise and sunset details from query-->
 				<p id="sunset">sunset</p>
 				</div>
-				<p id="placestogo">
+				<p id="placestogo"><!--collects all the venue results as a list via http request to foursquare-->
 				</p>
 				<p id="mapiconcredit">
-				<img src="images/foursquareicon.png">
-				<a href="https://mapicons.mapsmarker.com"><img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo"></a?=>
+				<img src="images/foursquareicon.png" alt="FourSquare Logo as the venues have been accessed from the Foursquare database">
+				<a href="https://mapicons.mapsmarker.com"><img src="images/miclogo-88x31.gif" alt="mapsmarker.com logo to show where the map icons were developed"></a>
 				</p>
 			</div>
 		</div>

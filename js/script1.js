@@ -9,6 +9,8 @@ var myMapKey = "AIzaSyDUu4nSvWhU3FAmZSlJGLthz5hHYZ5X__o";
 		    });	
     }
 	
+
+	
 document.addEventListener('DOMContentLoaded', function(){
 	console.log("Dom loaded")
 	
@@ -207,8 +209,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}
 	
+
+	
 	function listen() {
 	/* Listen for changes to the activity buttons etc */
+	
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
         console.log("listening");
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
@@ -230,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			location.reload();
 			document.getElementById("second").style.display="none";
 	}
+	
 	var changeStyleParks = function(){
 		if (document.getElementById("parks").checked){
 			document.getElementById("pa").style.backgroundColor ="#FB9905";
@@ -237,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		else{
 			document.getElementById("pa").style.backgroundColor="rgb(167, 244, 66)";
 		}
+		
 	}
 	var changeStylePlaycentres = function(){
 		if (document.getElementById("playcentres").checked){
