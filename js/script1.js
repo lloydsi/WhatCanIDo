@@ -213,9 +213,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	function listen() {
 	/* Listen for changes to the activity buttons etc */
-	
+	    console.log("listening");
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
-        console.log("listening");
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
 		document.getElementById("pa").addEventListener("click",changeStyleParks);
 		document.getElementById("pc").addEventListener("click", changeStylePlaycentres);
