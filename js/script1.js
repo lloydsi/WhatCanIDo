@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				    marker.content = contentString;
 				    var infoWindow = new google.maps.InfoWindow();
 				    google.maps.event.addListener(marker, 'click', function() {infoWindow.setContent(this.content);infoWindow.open(this.map,this)});
-         	        /*items.appendChild(places)*/
+         	        /*create the list items and links*/
 					li.appendChild(a);
 					a.appendChild(linkText);
 					a.title = names;
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	
 	function listen() {
-	/* Listen for changes to the activity buttons etc */
+	/* Listen for changes to the activity buttons etc too much code - should have used a function */
 	    console.log("listening");
 	    var go = document.getElementById("go").addEventListener("click", enter, true);
 		var refreshdoc = document.getElementById("searchAgain").addEventListener("click", refresh);
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 		
 	}  
-	/*
+	/*I COULDNT GET THIS TO WORK WITH THE EVENTFUL API THROUGH MY APP BUT IT WORKED DIRECTLY INTO MY BROWSER
 	var Eventful= function Eventful(){
 		var date = document.getElementById("date_input").value;
 		var xhttp = new XMLHttpRequest();

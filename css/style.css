@@ -41,7 +41,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+/* HTML5 display-role reset for older browsers ============*/
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -99,10 +99,10 @@ table {
         width: 100%;
     }
 }
-/*====================CSS Body ======*/
+/*====================CSS Body =============================*/
 body{
     font-family:Reem Kufi, sans-serif;
-    background-color:  rgb(204, 243, 242); /*#FAAC58/*rgb(246,154,50); /*orange*/
+    background-color:  rgb(204, 243, 242); 
 }
 /*====================begin CSS for ropeswing section ======*/
 #ropeswing{
@@ -137,7 +137,7 @@ body{
 		width: 100%;	
 	}
 }
-/*====================begin CSS for headers======*/
+/*====================begin CSS for headers===============*/
 header{
     margin-left: 25%;
     position: absolute;
@@ -205,7 +205,7 @@ header h2{
 	}
 }
 
-/*====================CSS for headers on the map or results section ======*/
+/*============CSS for headers on the map or results section ======*/
 #results header{
 	margin: 0;
 	position: relative;
@@ -228,7 +228,7 @@ header h2{
 }
 /*====================begin CSS for labels with a class of my button i.e linked to checkboxes which are hidden ======*/
 .mybutton {
-    background-color: #FB9905; /*rgb(205,192,194); */
+    background-color: #FB9905;
     border: 1px solid;
     box-shadow: 0 2px grey;
     border-radius: 5%;
@@ -239,7 +239,7 @@ header h2{
     font-size: 110%;
     width: 20%;
     margin: 0.5%;
-    font-family: courier new;/*'Reem Kufi', sans-serif;*/
+    font-family: courier new;
 }
 
 #searchAgain{
