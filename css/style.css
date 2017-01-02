@@ -158,21 +158,29 @@ header h1{
 @media screen and (max-width: 1000px) {
     header h1{
 		font-size: 400%;
+		margin:auto;
 	}
 }
 @media screen and (max-width: 800px) {
     header {
 		margin: auto;
-		background-color: rgba(255,255,255,0.9);	
+			
 		width: 100%;
 		margin-top:10%;
 	}
 }
-
 @media screen and (max-width: 800px) {
+    #main  {
+		
+		background-color: rgba(255,255,255,0.9);	
+		
+	}
+}
+
+@media screen and (max-width: 550px) {
     header h1{
 		margin: auto;
-		font-size: 350%;
+		font-size: 300%;
 		text-align:center;
 	}
 }
@@ -195,16 +203,25 @@ header h2{
 @media screen and (max-width: 1200px) {
 	header h2{
 		font-size: 160%;
+		margin:auto;
+		text-align: center;
 	}
 }
 
 @media screen and (max-width: 800px) {
     header h2{
+		font-size: 130%;
 		margin-left: auto;
 		text-align: center;
 	}
 }
-
+@media screen and (max-width: 800px) {
+    #results header h2{
+		font-size: 230%;
+		margin-left: auto;
+		text-align: center;
+	}
+}
 /*============CSS for headers on the map or results section ======*/
 #results header{
 	margin: 0;
@@ -248,17 +265,32 @@ header h2{
 	
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1280px) {
     .mybutton{
 		font-size: 80%;
 		width: 30%;
 	}
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 800px) {
     .mybutton{
 		font-size: 70%;
 		width: 40%;
+	}
+}
+
+@media screen and (max-width: 525px) {
+    .mybutton{
+		font-size: 90%;
+		width: 90%;
+		margin: auto;
+	}
+}
+@media screen and (max-width: 525px) {
+    #searchAgain{
+		font-size: 90%;
+		width: 40%;
+		margin: auto;
 	}
 }
 
@@ -297,6 +329,15 @@ input[type="checkbox"] {
 		margin-top: 1%;
 	}
 }
+
+@media screen and (max-width: 525px) {
+    #go{
+		font-size: 90%;
+		width: 90%;
+		margin:auto;
+		margin-top: 2%;
+	}
+}
 #buttons{
     margin: auto;
     margin-top: 0.5%;
@@ -305,7 +346,8 @@ input[type="checkbox"] {
 @media screen and (max-width: 800px) {
     #buttons{
 		padding-left: 10%;
-		margin-top:1%;
+		margin-top:5%;
+		padding-top:2%;
 	}
 }
 
@@ -322,13 +364,23 @@ form{
   }
 @media screen and (max-width: 800px) {
     form{
-		margin-top: 1%;
+		
+		margin: auto;
 		height: 60vh;
+		margin-bottom:0;
+	}
+}
+
+@media screen and (max-width: 800px) {
+    form.col-8 div.row{
+		
+		padding-left:10%;
 	}
 }
 
 @media screen and (max-width: 350px) {
-    form{
+    form,col-8{
+		width: 100%;
 		margin: auto;
 	}
 }
@@ -343,7 +395,34 @@ label{
     margin: 0.5%;
     margin-bottom: 0;
     padding-bottom:0.5%;
+	padding-left: 10%;
 }
+
+@media screen and (max-width: 800px){
+	#date_input,
+#location_input,
+#radius,
+#query
+{
+    font-size: 100%;
+    font-family: courier new;
+    padding:0.75%;
+    margin: auto;
+    margin-bottom: 0;
+    padding-bottom:0.5%;
+	width: 60%;
+}
+}
+@media screen and (max-width: 500px){
+	#date_input,
+#location_input,
+#radius,
+#query
+{
+	width: 90%;
+}
+}
+
 #date_input{
 	padding:0.5%;
 }
@@ -352,14 +431,18 @@ label{
 #m{
 	padding:0;
 	position: relative;
-}
-
-#m,
-#opt{
 	margin-left: 65%;
 }
 
-div.row label.col-1{
+@media screen and (max-width: 800px){
+	#m, #opt{
+		display: none;
+		margin:0;
+		width:5%;
+	}
+}
+div.row label.col-1,
+.labelinput    {
 	font-family: 'Shadows Into Light', cursive;
 	color: #045184;
 	font-size: 150%;
@@ -367,13 +450,22 @@ div.row label.col-1{
 	padding-top: 0;
 	margin-top: 0;
 	padding-bottom:0.5%;
-	margin-right:3%;
+	margin-right:7%;
 }
-	
+@media screen and (max-width: 1280px){
+	 .labelinput{
+		font-family: 'Shadows Into Light', cursive;
+		font-size:150%;
+		margin-right: 10%;
+		
+	}
+}
+
 
 @media screen and (max-width: 350px) {
     label, #date_input, #location_input{
 		Font-size: 65%;
+		height: 30%;
 	}
 }
 /*====================begin CSS for map section and results===============================*/

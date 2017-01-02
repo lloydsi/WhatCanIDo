@@ -16,15 +16,15 @@
 		<div class="row" id="top">
 			<div id="ropeswing" class= "col-4">
 			<img src="images/EditedActivity.png" alt="children swinging on a rope showing this is a site for family fun time activities">
-			<header>
+			<header id="main">
 				<h1> What Can I Do Today?</h1>
 				<h2> Family Friendly Activity Checker</h2>
 			</header>
 			</div>
 			<form class="col-8" >
 				<div class="row">
-				    <label for="date_input" class="col-1">When? </label><input id="date_input" type="date" name="date" class="col-3"><!--default date added as today from javascript - may have problems with some browsers-->
-					<label for="query" class="col-1">Local Events?</label>
+				    <label for="date_input" class="col-1 labelinput">When? </label><input id="date_input" type="date" name="date" class="col-3"><!--default date added as today from javascript - may have problems with some browsers-->
+					<label for="query" class="col-1 labelinput">Local Events?</label>
 					<select id="query" class="col-3"><!--dropdown input for Eventful-->
 					    <option value="family events" selected>Family Events</option>
 						<option value="family films">Family Films</option>
@@ -32,12 +32,12 @@
 						<option value="seasonal events">Seasonal Events</option>
 						<option value="live bands">Live Bands</option>
 					</select>
-					<span id="opt" class="col-12">(optional)</span><!--information for user-->
+					<span id="opt" class="col-1">(optional)</span><!--information for user-->
 				</div>
 				<div class="row">
-				    <label for="location_input" class="col-1">Where?</label><input id="location_input" type="text" name="location" class="col-3"><!--input to search lat long and then for venues-->
-					<label for="radius" class="col-1">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5"><!--this gets multiplied by 1000 to create metres radius in js-->
-					<span id="m" class="col-12"><span id="radiusmessage"></span>(kilometres)</span>
+				    <label for="location_input" class="col-1 labelinput">Where?</label><input id="location_input" type="text" name="location" class="col-3"><!--input to search lat long and then for venues-->
+					<label for="radius" class="col-1 labelinput">Radius?</label><input id="radius" type="text" name="radius" class="col-3" value = "5"><!--this gets multiplied by 1000 to create metres radius in js-->
+					<span id="m" class="col-1"><span id="radiusmessage"></span>(kilometres)</span>
 				</div>
 				<div class="row col-12" id="buttons" ><!--although id of buttons these are checkboxes which are hidden and labels styled as buttons-->
 					<label class = "mybutton col-4" for="parks" id="pa"><span></span>Parks</label><!--value attribute is the category id for foursquare-->
